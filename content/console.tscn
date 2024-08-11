@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" path="res://addons/GDKitConsole/src/gdkit_console.gd" id="1_jk6ko"]
 
-[node name="GDKitConsole" type="Node" node_paths=PackedStringArray("input_text_edit", "output_text_edit")]
+[node name="GDKitConsole" type="Node" node_paths=PackedStringArray("input_text_edit", "output_text_edit", "root_canvas_layer")]
 script = ExtResource("1_jk6ko")
 input_text_edit = NodePath("Root_CL/Control/Content_VBOX/Input_TE")
 output_text_edit = NodePath("Root_CL/Control/Content_VBOX/Output_TE")
+root_canvas_layer = NodePath("Root_CL")
 
 [node name="Root_CL" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="Root_CL"]
 layout_mode = 3
@@ -36,6 +38,8 @@ size_flags_vertical = 3
 [node name="Output_TE" type="TextEdit" parent="Root_CL/Control/Content_VBOX"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+theme_override_colors/background_color = Color(0, 0, 0, 0.2)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 editable = false
 
@@ -43,6 +47,6 @@ editable = false
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_colors/background_color = Color(0, 0, 0, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
-text = "Input
-"

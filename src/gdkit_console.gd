@@ -2,13 +2,22 @@ extends Node
 
 @export var input_text_edit: TextEdit
 @export var output_text_edit: TextEdit
+@export var root_canvas_layer : CanvasLayer
 
 var console_history: Array[String] = []
 var function_registry: Dictionary = {}
 
 func _ready() -> void:
+	set_process_input(true)
 	input_text_edit.connect("gui_input", _on_input)
 
+func _toggle_console() -> void:
+	if root_canvas_layer.visible:
+		root_canvas_layer.visible = false
+	else:
+		root_canvas_layer.visible = true
+		input_text_edit.grab_focus()
+	
 func cls() -> void:
 	output_text_edit.text = ""
 	
@@ -21,6 +30,10 @@ func print_fnc_reg() -> void:
 	print("Function Registry:")
 	for name in function_registry.keys():
 		print("Function " + name + "\n")
+
+func _input(ev):
+	if Input.is_key_pressed(KEY_F12):
+		_toggle_console()
 
 # Input handling
 func _on_input(event: InputEvent) -> void:
