@@ -8,10 +8,18 @@ var console_history: Array[String] = []  # Stores command history
 var function_registry: Dictionary = {}  # Maps function names to Callable objects
 var history_index: int = -1  # Index for navigating through command history
 
+# Key codes for toggling the console (loaded from project settings)
+var toggle_key_1: int
+var toggle_key_2: int
+
 # Initialization function
 func _ready() -> void:
 	set_process_input(true)  # Enable input processing
 	input_text_edit.connect("gui_input", _on_input)  # Connect input signal
+
+	# Load toggle key settings from project settings
+	toggle_key_1 = ProjectSettings.get_setting("GDKitConsole/toggle_key_1", KEY_F12)
+	toggle_key_2 = ProjectSettings.get_setting("GDKitConsole/toggle_key_2", -1)  # Default to -1 (disabled)
 
 # Toggle console visibility
 func _toggle_console() -> void:
@@ -35,8 +43,10 @@ func print_fnc_reg() -> void:
 
 # Handle input events
 func _input(ev):
-	if Input.is_key_pressed(KEY_F12):
-		_toggle_console()  # Toggle the console when F12 is pressed
+	# Toggle the console if either of the configured keys is pressed
+	if ev is InputEventKey and ev.pressed:
+		if ev.keycode == toggle_key_1 or ev.keycode == toggle_key_2:
+			_toggle_console()  # Toggle the console
 
 # Handle key events
 func _on_input(event: InputEvent) -> void:
