@@ -9,6 +9,7 @@ output_text_edit = NodePath("Root_CL/Control/Content_VBOX/Output_TE")
 root_canvas_layer = NodePath("Root_CL")
 
 [node name="Root_CL" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="Root_CL"]
 layout_mode = 3
