@@ -1,4 +1,13 @@
-# GDKitConsole
+<div align="center">
+
+# `📔 GDKitConsole` <img src="https://raw.githubusercontent.com/aemmadi/aemmadi/master/wave.gif" width="30">
+
+![GDScript](https://img.shields.io/badge/-godot-00599C?style=flat-square&logo=godot)
+
+<b>An (unofficial) open source gdscript written plugin for dev console in Godot Engine</b>
+
+</div>
+
 
 **GDKitConsole** is a simple in-game console for the Godot Engine, designed to assist with debugging and command execution. It allows you to register functions, execute commands, and manage command history directly within the Godot editor.
 
